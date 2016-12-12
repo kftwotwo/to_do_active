@@ -4,8 +4,8 @@
   <h3>Here are all the tasks in this list:</h3>
 
   <ul>
-    <% @list.tasks().each() do |task| %>
-      <li><%= task.description() %> </li>
+    <% @list.tasks.not_done().each() do |task| %>
+      <li><%= task.description() %> <a href="/tasks/<%= task.id() %>/edit">Update this task's description</a></li>
     <% end %>
   </ul>
 
