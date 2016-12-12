@@ -28,12 +28,4 @@ describe(Task) do
       expect(test_task.list_id()).to(eq(1))
     end
   end
-
-  describe("#==") do
-    it("is the same task if it has the same description and list ID") do
-      task1 = Task.new({:description => "learn SQL", :list_id => 1})
-      task2 = Task.new({:description => "learn SQL", :list_id => 1})
-      expect(task1).to(eq(task2))
-    end
-  end
 end
