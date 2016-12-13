@@ -10,4 +10,9 @@ describe(Task) do
       expect(Task.not_done()).to(eq(not_done_tasks))
     end
   end
+
+  it("validates presence of description") do
+    task = Task.new({:description => ""})
+    expect(task.save()).to(eq(false))
+  end
 end
