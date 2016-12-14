@@ -37,10 +37,15 @@ post("/tasks") do
   @list = List.find(list_id)
   @task = Task.new({:description => description, :list_id => list_id, :done => false})
   if @task.save()
-    erb(:task_success)
+    redirect("/tasks/".concat(@task.id().to_s()))
   else
-    erb(:errors)
+    erb(:index)
   end
+end
+
+get('/tasks/:id') do
+  @task = Task.find(params.fetch("id").to_i())
+  erb(:index)
 end
 
 get('/tasks/:id/edit') do
@@ -54,4 +59,13 @@ patch("/tasks/:id") do
   @task.update({:description => description})
   @tasks = Task.all()
   erb(:index)
+end
+
+delete('/tasks/:id') do
+  @task1 = Task.find(params.fetch("id").to_i())
+  if @task1.destroy()
+    redirect("/tasks")
+  else
+    erb(:task)
+  end
 end
