@@ -42,6 +42,6 @@ describe('adding tasks to a list', {:type => :feature}) do
     visit("/lists/#{test_list.id()}")
     fill_in("description", {:with => "Learn SQL"})
     click_button("Add task")
-    expect(page).to have_content("Success")
+    expect(page).to have_content("Welcome to the To Do App View All Lists Add New List")
   end
 end
